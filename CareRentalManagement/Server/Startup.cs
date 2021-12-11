@@ -1,6 +1,8 @@
 using System.Linq;
 using CareRentalManagement.Server.Data;
+using CareRentalManagement.Server.IRepository;
 using CareRentalManagement.Server.Models;
+using CareRentalManagement.Server.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,6 +42,8 @@ namespace CareRentalManagement.Server
 
 			services.AddAuthentication()
 				.AddIdentityServerJwt();
+
+			services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 			services.AddControllersWithViews();
 			services.AddRazorPages();
